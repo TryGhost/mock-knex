@@ -54,11 +54,11 @@ var Mocker = function () {
     value: function _replace(obj, spec, replaced, path) {
       var replacement = _lodash2.default.get(spec, path);
 
-      path = path.replace('._constructor.', '.constructor.');
+      path = path.replace('._constructor.', '.constructor.').replace('._prototype.', '.prototype.');
 
       var context = this.context(obj, path);
       var name = _lodash2.default.last(path.split('.'));
-      var replacedPath = path.replace('.constructor.', '._constructor.');
+      var replacedPath = path.replace('.constructor.', '._constructor.').replace('.prototype.', '._prototype.');
 
       if (!_lodash2.default.get(replaced, path)) {
         _lodash2.default.set(replaced, replacedPath, _lodash2.default.get(obj, path));
